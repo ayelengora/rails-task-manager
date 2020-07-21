@@ -1,0 +1,21 @@
+<h1>INDEX</h1>
+
+<ol>
+  <%@tasks.each do |task|%>
+    <li>
+    <% if task.completed %> 
+      <input type="checkbox" checked disabled="disabled">
+    <%else%>
+      <input type="checkbox" disabled="disabled">
+    <%end%>
+    <%= link_to task.title , task_path(task) %>
+    <a>...
+    <%= link_to "Delete",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></a>
+    </li> 
+  <% end %>
+</ol>
+<%= link_to "Add a new task",  new_task_path %>
+
